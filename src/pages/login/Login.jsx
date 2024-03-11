@@ -7,7 +7,7 @@ const Login = () => {
         <div className="left">
            <h1>Hello World.</h1>
            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora porro aliquid aspernatur ratione sequi maiores repellat iste. Numquam.</p>
-           <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, officiis.</span>
+           <span>Don't you have an account?</span>
            <button>Register</button>
         </div>
         <div className="right">

@@ -1,16 +1,19 @@
-import './register.scss'
+import './register.scss';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   return (
     <div className='register'>
-      <div className="card">
-        <div className="left">
+      <div className='card'>
+        <div className='left'>
           <h1>MeetUp.</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora porro aliquid aspernatur ratione sequi maiores repellat iste. Numquam.</p>
           <span>Do you have an account?</span>
-          <button>Login</button>
+          <Link to='/login'>
+            <button>Login</button>
+          </Link>
         </div>
-        <div className="right">
+        <div className='right'>
           <h1>Register</h1>
           <form>
             <input type='text' placeholder='Username'></input>

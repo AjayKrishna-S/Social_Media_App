@@ -1,0 +1,10 @@
+.rightBar{
+    flex:3;
+    position: sticky;
+    top:70px;
+    height: calc(100vh - 70px);
+    &::-webkit-scrollbar{
+        display: none
+    }
+    background-color: rgb(214, 196, 214);
+}

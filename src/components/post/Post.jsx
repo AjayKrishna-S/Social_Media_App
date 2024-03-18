@@ -5,13 +5,15 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useState } from 'react';
+import Comments from '../comments/Comments';
 
 const Post = ({post}) => {
 
     const [liked, setLiked] = useState(false);
+    const [commentOpen, setCommentOpen] = useState(false);
 
     const toggle = () =>{
-        setLiked(!liked)
+        
     }
 
   return (
@@ -23,7 +25,7 @@ const Post = ({post}) => {
                     <img src={post.profilePicture} alt={post.name} />
                     <div className="details">
                         <span className='name'>{post.name}</span>
-                        <span className='date'>1 min ago</span>
+                        <span className='date'>2 hours ago</span>
                     </div>
                 </div>
                     <MoreHorizIcon />
@@ -35,13 +37,11 @@ const Post = ({post}) => {
                 }
             </div>
             <div className="info">
-                <div className="item">{ liked ? <FavoriteOutlinedIcon onClick = {toggle}/> :  <FavoriteBorderOutlinedIcon onClick = {toggle}/>} 17 Likes</div>
-                <div className="item"><CommentOutlinedIcon /> 5 Commands</div>
+                <div className="item">{ liked ? <FavoriteOutlinedIcon onClick ={()=>{setLiked(!liked)}}/> :  <FavoriteBorderOutlinedIcon onClick ={()=>{setLiked(!liked)}}/>} 17 Likes</div>
+                <div className="item" onClick={()=> setCommentOpen(!commentOpen)}><CommentOutlinedIcon /> 5 Commands</div>
                 <div className="item"><ShareOutlinedIcon /> Share</div>
-                
-                
-                
             </div>
+            {commentOpen && <Comments/>}
         </div>
     </div>
   )

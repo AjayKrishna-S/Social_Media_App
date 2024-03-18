@@ -1,7 +1,11 @@
 import './comments.scss';
 import jamesBond from '../../assets/images/James_Bond_29_-_Profile.webp';
 import soonaPaana from '../../assets/images/hq720.jpg';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
 const Comments = () => {
+    const { currentUser } = useContext(AuthContext)
+
     const comments = [
         {
             id: 1,
@@ -14,14 +18,19 @@ const Comments = () => {
             id: 2,
             desc: "Lorem t itaque pariatur dolore iusto. Quod.",
             name: "soona Paana",
-            userId: 1,
+            userId: 2,
             profilePic: soonaPaana 
         }
     ];
   return (
     <div className='comments'>
+        <div className="write">
+            <img src={currentUser.profilePicture} alt={currentUser.name} />
+            <input type="text" placeholder='Write a comment' />
+        </div>
         {comments.map((comment)=>{
-            return (<div className='comment'>
+            return (
+            <div className='comment' key={comment.id}>
                 <img src={comment.profilePic} />
                 <div className='info'>
                     <span>{comment.name}</span>

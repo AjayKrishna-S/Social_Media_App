@@ -1,4 +1,3 @@
-import { createContext } from 'react';
 import './stories.scss';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
@@ -35,15 +34,15 @@ const Stories = () => {
   return (
     <div className='stories'>
         <div className='story'>
-                    <img src={currentUser.profilePicture} />
+                    <img src={currentUser.profilePicture} alt={currentUser.name}/>
                     <span>{currentUser.name}</span>
                     <button>+</button>
                 </div>
-        {stories.map((storie) => {
+        {stories.map((story) => {
             return(
-                <div className='story'>
-                    <img src={storie.img} />
-                    <span>{storie.name}</span>
+                <div className='story' key={story.id}>
+                    <img src={story.img} alt={story.name}/>
+                    <span>{story.name}</span>
                 </div>
             )  
         })}

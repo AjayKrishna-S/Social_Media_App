@@ -17,7 +17,7 @@ const Posts = () => {
     {
       id:2,
       name: "Elon Musk",
-      userId: 1,
+      userId: 2,
       profilePicture: "https://images.pexels.com/photos/2108845/pexels-photo-2108845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur magnam cupiditate repudiandae id. Dolorem ipsam itaque harum. Illum voluptatum nisi voluptatibus hic ex dolore.",
     }

@@ -6,27 +6,29 @@ import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useState } from 'react';
 import Comments from '../comments/Comments';
+import { Link } from 'react-router-dom';
 
 const Post = ({post}) => {
 
     const [liked, setLiked] = useState(false);
     const [commentOpen, setCommentOpen] = useState(false);
 
-    const toggle = () =>{
-        
-    }
-
   return (
     <div className='post'>
         <div className="container">
 
             <div className="user">
-                <div className='userInfo'>
-                    <img src={post.profilePicture} alt={post.name} />
-                    <div className="details">
-                        <span className='name'>{post.name}</span>
-                        <span className='date'>2 hours ago</span>
-                    </div>
+                <div className='userData'>
+                        <img src={post.profilePicture} alt={post.name} />
+                        <div className="details">
+                    <Link 
+                        to={`/profile/${post.userId}`}
+                        style={{textDecoration:'none', color:'inherit'}}
+                    >
+                            <span className='name'>{post.name}</span>
+                    </Link>
+                            <span className='date'>2 hours ago</span>
+                        </div>
                 </div>
                     <MoreHorizIcon />
             </div>

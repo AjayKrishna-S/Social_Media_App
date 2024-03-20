@@ -32,9 +32,11 @@ const NavBar = () => {
             </div>
         </div>
         <div className='right'>
-            <PersonOutlineOutlinedIcon />
-            <MailOutlinedIcon />
-            <NotificationsOutlinedIcon />
+            <div className="rightIcons">
+                <PersonOutlineOutlinedIcon />
+                <MailOutlinedIcon />
+                <NotificationsOutlinedIcon />
+            </div>
             <div className='user'>
                 <img src={currentUser.profilePicture}></img>
                 <span>{currentUser.name}</span>

@@ -1,5 +1,6 @@
 import React from 'react';
-import './rightBar.scss'
+import './rightBar.scss';
+import profile from '../../assets/images/peter-profile.JPG';
 
 const RightBar = () => {
   return (
@@ -9,8 +10,8 @@ const RightBar = () => {
           <span>Suggestions for you</span>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
-              <span>mark zuck</span>
+              <img src='https://i.pinimg.com/564x/1c/db/dd/1cdbdd7cc65b9c287c95e0517ca02dc2.jpg' />
+              <span>Sundar Pichai</span>
             </div>
             <div className="buttons">
               <button>follow</button>
@@ -19,8 +20,8 @@ const RightBar = () => {
           </div>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
-              <span>mark zuck</span>
+              <img src='https://i.pinimg.com/564x/a0/a6/14/a0a614afa4bbd8ea899dbc991d7268da.jpg' />
+              <span>Mark Zuckerberg</span>
             </div>
             <div className="buttons">
               <button>follow</button>
@@ -32,31 +33,31 @@ const RightBar = () => {
           <span>Latest Activities</span>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
-              <p><span>mark zuck</span> changed their cover picture</p>
+              <img src={profile} />
+              <p><span>Peter Parker</span> changed their profile picture</p>
             </div>
-            <span>1 min ago</span>
+            <span className='time'>1 min ago</span>
           </div>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
-              <p><span>mark zuck</span> changed their cover picture</p>
+              <img src='https://i.pinimg.com/564x/b3/aa/ac/b3aaac681f22e35ed2c50fcf4f3e0fbd.jpg' />
+              <p><span>Jeff Bezos</span> update their story</p>
             </div>
-            <span>1 min ago</span>
+            <span className='time'>25 min ago</span>
           </div>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
-              <p><span>mark zuck</span> changed their cover picture</p>
+              <img src='https://i.pinimg.com/564x/a8/5c/37/a85c371aaee07952889c5605c96aeb60.jpg' />
+              <p><span>Elon Musk</span> changed their cover picture</p>
             </div>
-            <span>1 min ago</span>
+            <span className='time'>30 min ago</span>
           </div>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
-              <p><span>mark zuck</span> changed their cover picture</p>
+              <img src='https://i.pinimg.com/564x/a0/ac/e3/a0ace3ac45fbd8d3d35be52879a11e29.jpg' />
+              <p><span>Ben Tenison</span> changed their profile picture</p>
             </div>
-            <span>1 min ago</span>
+            <span className='time'>1 hour ago</span>
           </div>
 
         </div>
@@ -64,23 +65,23 @@ const RightBar = () => {
           <span>Online Friends</span>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
+              <img src='https://i.pinimg.com/564x/1a/20/41/1a2041690dc846d61a6e3c39f06751aa.jpg' />
               <div className='online' />
-              <span>mark zuck</span>
+              <span>The Undertaker</span>
             </div>
           </div>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
+              <img src='https://i.pinimg.com/564x/a0/ac/e3/a0ace3ac45fbd8d3d35be52879a11e29.jpg' />
               <div className='online'></div>
-              <span>mark zuck</span>
+              <span>Ben Tenison</span>
             </div>
           </div>
           <div className="user">
             <div className="userInfo">
-              <img src='https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600' />
+              <img src='https://i.pinimg.com/564x/a8/5c/37/a85c371aaee07952889c5605c96aeb60.jpg' />
               <div className='online'></div>
-              <span>mark zuck</span>
+              <span>Elon Musk</span>
             </div>
           </div>
         </div>

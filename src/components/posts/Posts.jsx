@@ -1,6 +1,7 @@
 import React from 'react';
 import './posts.scss';
 import Post from '../post/Post.jsx';
+import profile from '../../assets/images/peter-profile.JPG'
 
 
 const Posts = () => {
@@ -8,24 +9,23 @@ const Posts = () => {
   const posts = [
     {
       id:1,
-      name: "Elon Musk",
+      name: "Peter Parker",
       userId: 1,
-      profilePicture: "https://images.pexels.com/photos/2108845/pexels-photo-2108845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur magnam cupiditate repudiandae id. Dolorem ipsam itaque harum. Illum voluptatum nisi voluptatibus hic ex dolore.",
-      img: "https://images.pexels.com/photos/2393835/pexels-photo-2393835.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      profilePicture: profile,
+      desc: "Hello World......!,     I wanna tell you something.",
+      img: "https://cdn.pixabay.com/photo/2022/05/15/04/36/art-7196739_1280.jpg",
     },
     {
       id:2,
-      name: "Elon Musk",
+      name: "The Undertaker",
       userId: 2,
-      profilePicture: "https://images.pexels.com/photos/2108845/pexels-photo-2108845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur magnam cupiditate repudiandae id. Dolorem ipsam itaque harum. Illum voluptatum nisi voluptatibus hic ex dolore.",
+      profilePicture: "https://i.pinimg.com/564x/1a/20/41/1a2041690dc846d61a6e3c39f06751aa.jpg",
+      desc: "You can not kill that which is already dead",
     }
   ];
   return (
     <div className='posts'>
       {posts.map(post=>{
-        console.log(post);
         return <Post
           post = {post}  
           key = {post.id}

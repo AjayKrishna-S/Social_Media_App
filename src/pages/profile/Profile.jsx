@@ -3,7 +3,6 @@ import profile from '../../assets/images/peter-profile.JPG'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import { NoEncryption } from '@mui/icons-material';
 import Posts from '../../components/posts/Posts.jsx';
 
 const Profile = () => {

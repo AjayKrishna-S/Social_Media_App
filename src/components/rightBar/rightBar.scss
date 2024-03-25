@@ -26,8 +26,10 @@
                 margin: 15px 0px;
                 border-radius: 5px;
 
-                span{
+                .time{
                     color: themed("textColorSoft");
+                    font-size: 12px;
+                    text-wrap: nowrap;
                 }
 
                 .user{

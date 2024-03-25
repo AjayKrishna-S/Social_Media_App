@@ -9,14 +9,14 @@ const Comments = () => {
     const comments = [
         {
             id: 1,
-            desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta velit itaque pariatur dolore iusto. Quod.",
+            desc: "Nice costume little boy.",
             name: "james Bond",
             userId: 1,
             profilePic: jamesBond
         },
         {
             id: 2,
-            desc: "Lorem t itaque pariatur dolore iusto. Quod.",
+            desc: "Sollu....Solli paaru neethan thairiyamana aalaachea",
             name: "soona Paana",
             userId: 2,
             profilePic: soonaPaana 

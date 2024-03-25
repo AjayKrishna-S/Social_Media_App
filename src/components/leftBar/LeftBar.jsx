@@ -3,7 +3,6 @@ import './leftBar.scss';
 import Friends from '../../assets/friends.png';
 import Groups from '../../assets/groups.png';
 import Market from '../../assets/marketplace.png';
-import Watch from '../../assets/watch.png';
 import Memories from '../../assets/memories.png';
 import Events from '../../assets/events.png';
 import Gaming from '../../assets/gaming.png';
@@ -24,22 +23,22 @@ const LeftBar = () => {
       <div className="container">
         <div className="menu">
           <div className="user">
-            <img src={currentUser.profilePicture}></img>
+            <img src={currentUser.profilePicture} alt="leftbaritems"></img>
             <span>{currentUser.name}</span></div>
             <div className="item">
-              <img src={Friends} alt="" />
+              <img src={Friends} alt="leftbaritems" />
               <span>Friends</span>
             </div>
             <div className="item">
-              <img src={Groups} alt="" />
+              <img src={Groups} alt="leftbaritems" />
               <span>Groups</span>
             </div>
             <div className="item">
-              <img src={Market} alt="" />
+              <img src={Market} alt="leftbaritems" />
               <span>Marketplace</span>
             </div>
             <div className="item">
-              <img src={Memories} alt="" />
+              <img src={Memories} alt="leftbaritems" />
               <span>Memories</span>
             </div>
         </div>
@@ -47,23 +46,23 @@ const LeftBar = () => {
         <div className="menu">
           <span>Your Shortcuts</span>
           <div className="item">
-            <img src={Events} alt="" />
+            <img src={Events} alt="leftbaritems" />
             <span>Events</span>
           </div>
           <div className="item">
-            <img src={Gaming} alt="" />
+            <img src={Gaming} alt="leftbaritems" />
             <span>Gaming</span>
           </div>
           <div className="item">
-            <img src={Gallery} alt="" />
+            <img src={Gallery} alt="leftbaritems" />
             <span>Gallery</span>
           </div>
           <div className="item">
-            <img src={Videos} alt="" />
+            <img src={Videos} alt="leftbaritems" />
             <span>Videos</span>
           </div>
           <div className="item">
-            <img src={Messages} alt="" />
+            <img src={Messages} alt="leftbaritems" />
             <span>Messages</span>
           </div>
         </div>
@@ -72,15 +71,15 @@ const LeftBar = () => {
         <div className="menu">
           <span>Others</span>
           <div className="item">
-            <img src={Fund} alt="" />
+            <img src={Fund} alt="leftbaritems" />
             <span>Fundraiser</span>
           </div>
           <div className="item">
-            <img src={Tutorials} alt="" />
+            <img src={Tutorials} alt="leftbaritems" />
             <span>Tutorials</span>
           </div>
           <div className="item">
-            <img src={Courses} alt="" />
+            <img src={Courses} alt="leftbaritems" />
             <span>Courses</span>
           </div>
         </div>

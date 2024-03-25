@@ -32,7 +32,7 @@ const Comments = () => {
         {comments.map((comment)=>{
             return (
             <div className='comment' key={comment.id}>
-                <img src={comment.profilePic} />
+                <img src={comment.profilePic} alt={comment.name}/>
                 <div className='info'>
                     <span>{comment.name}</span>
                     <p>{comment.desc}</p>

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
 
 const Login = () => {
-  alert('Please click "Login"')
   const { login } = useContext(AuthContext);
 
   const handleLogin = ()=> {

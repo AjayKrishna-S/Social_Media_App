@@ -8,7 +8,7 @@ export const register = (req,res) => {
 
      db.query(q,[req.body.username], (err,data)=>{
         if(err) return res.status(500).json(err);
-        if(data.length) return res.status(409).json("user already exist");
+        if(data.length) return res.status(409).json("user already exist!");
 
     //Create User
         const salt = bcrypt.genSaltSync(10);
@@ -51,5 +51,8 @@ export const login = (req,res) => {
     })
 }
 export const logout = (req,res) => { 
-    
+    res.clearCookie("accessToken",{
+        secure:true,
+        sameSite:"none"
+    }).status(200).json("User logged out successfully!")
 }

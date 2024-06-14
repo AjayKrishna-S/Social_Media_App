@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 import profilePic from "../assets/images/dp.jpg"
+import axios from "axios";
 
 
 export const AuthContext = createContext();
@@ -9,12 +10,13 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) =>{
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
 
-    const login = () => {
-        setCurrentUser({
-            id:1,
-            name: "Ajay Krishna",
-            profilePicture: profilePic
+    const login = async(inputs) => {
+        const res = await axios.post("http://localhost:8800/api/auth/login",inputs,{
+            withCredentials: true
         });
+
+        setCurrentUser(res.data);
+        console.log(res);
     };
 
     useEffect(()=>{

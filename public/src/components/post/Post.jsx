@@ -12,11 +12,9 @@ const Post = ({post}) => {
 
     const [liked, setLiked] = useState(false);
     const [commentOpen, setCommentOpen] = useState(false);
-
   return (
     <div className='post'>
         <div className="container">
-
             <div className="user">
                 <div className='userData'>
                         <img src={post.profilePicture} alt={post.name} />

@@ -1,0 +1,37 @@
+@import '../../style.scss';
+
+.share{
+    @include themify($themes){
+        display: flex;
+        gap:10px;
+        height: 180px;
+        margin-bottom: 30px;
+
+        box-shadow: -4px 4px 12px -3px rgba(0, 0, 0, 0.38);
+        border-radius: 10px;
+        background-color: themed("bg");
+        color: themed("textColor");
+
+        @include  mobile {
+            height: 50px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        @include  tablet {
+            height: 100px;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .container{
+            .top{
+                img{
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
+        
+        
+    }
+}

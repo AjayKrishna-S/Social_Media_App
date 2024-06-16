@@ -8,11 +8,8 @@ import { AuthContext } from '../../context/authContext.js';
 import { useQueryClient,useMutation } from '@tanstack/react-query';
 
 const Share = () => {
-    const { currentUser } = useContext(AuthContext);
-    const queryClient = useQueryClient(); 
-
     const [file, setFile] = useState(null);
-    const [desc, setDesc] = useState(null);
+    const [desc, setDesc] = useState("");
 
     const upload = async () =>{
         try{
@@ -24,7 +21,10 @@ const Share = () => {
         catch(err){
             console.log("err" + err);
         }
-    }
+    };
+
+    const { currentUser } = useContext(AuthContext);
+    const queryClient = useQueryClient(); 
 
     const mutation = useMutation({
         mutationFn: (newPost) => {
@@ -53,8 +53,8 @@ const Share = () => {
                     <input 
                         type="text" 
                         placeholder={`What's on your mind ${currentUser.name}?`} 
-                        onChange={e => setDesc(e.target.value)}
                         value={desc}
+                        onChange={e => setDesc(e.target.value)}
                     />
                 </div>
                 <div className="right">

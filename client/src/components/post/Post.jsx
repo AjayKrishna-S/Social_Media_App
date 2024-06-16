@@ -5,7 +5,7 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useState } from 'react';
-import Comments from '../comments/Comments';
+import Comments from '../comments/Comments.jsx';
 import { Link } from 'react-router-dom';
 import moment from 'moment'
 
@@ -13,6 +13,7 @@ const Post = ({post}) => {
 
     const [liked, setLiked] = useState(false);
     const [commentOpen, setCommentOpen] = useState(false);
+console.log("post page id"  + post.id);
   return (
     <div className='post'>
         <div className="container">
@@ -42,7 +43,7 @@ const Post = ({post}) => {
                 <div className="item" onClick={()=> setCommentOpen(!commentOpen)}><CommentOutlinedIcon /> 5 Commands</div>
                 <div className="item"><ShareOutlinedIcon /> Share</div>
             </div>
-            {commentOpen && <Comments/>}
+            {commentOpen && <Comments postId = {post.id}  />}
         </div>
     </div>
   )

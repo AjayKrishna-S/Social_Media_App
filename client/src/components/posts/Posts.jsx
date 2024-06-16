@@ -10,10 +10,9 @@ const Posts = () => {
    const { data,error, isLoading } = useQuery({
     queryKey:["post"],
     queryFn:() => makeRequest.get("/posts").then((res)=>{
-      console.log(error);
       return res.data;
     })});
-    
+
   return (
     <div className='posts'>
       { error 

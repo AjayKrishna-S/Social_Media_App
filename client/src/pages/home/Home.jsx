@@ -1,5 +1,5 @@
 import Stories from '../../components/stories/Stories.jsx';
-import Share from '../../components/share/Share.js';
+import Share from '../../components/share/Share.jsx';
 import Posts from '../../components/posts/Posts.jsx';
 import './home.scss';
 

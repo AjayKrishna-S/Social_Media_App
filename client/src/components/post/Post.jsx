@@ -8,12 +8,27 @@ import { useState } from 'react';
 import Comments from '../comments/Comments.jsx';
 import { Link } from 'react-router-dom';
 import moment from 'moment'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { makeRequest } from '../../axios.js';
 
 const Post = ({post}) => {
-
-    const [liked, setLiked] = useState(false);
+    const postId = post.id;
+    // const [liked, setLiked] = useState(false);
     const [commentOpen, setCommentOpen] = useState(false);
-console.log("post page id"  + post.id);
+
+        const { data, error, isLoading } = useQuery({
+            queryKey: ["likes", postId],
+            queryFn: () => {
+                return makeRequest.get(`/likes?postId=${postId}`).then((res) => {
+                    return res.data;
+                });
+            }
+        });
+    
+        if (isLoading) return <div>Loading...</div>;
+        if (error) return <div>Error loading likes</div>;
+        if (data) console.log(data);;
+
   return (
     <div className='post'>
         <div className="container">
@@ -39,9 +54,20 @@ console.log("post page id"  + post.id);
                 }
             </div>
             <div className="info">
-                <div className="item">{ liked ? <FavoriteOutlinedIcon onClick ={()=>{setLiked(!liked)}}/> :  <FavoriteBorderOutlinedIcon onClick ={()=>{setLiked(!liked)}}/>} 17 Likes</div>
-                <div className="item" onClick={()=> setCommentOpen(!commentOpen)}><CommentOutlinedIcon /> 5 Commands</div>
-                <div className="item"><ShareOutlinedIcon /> Share</div>
+                <div className="item">
+                    {/* { liked 
+                        ? <FavoriteOutlinedIcon 
+                            style={{color : "red"}} 
+                            onClick ={()=>{setLiked(!liked)}}/> 
+                        : <FavoriteBorderOutlinedIcon 
+                            onClick ={()=>{setLiked(!liked)}}/>} */}
+                17 Likes</div>
+                <div className="item" 
+                    onClick={()=> setCommentOpen(!commentOpen)}>
+                    <CommentOutlinedIcon />
+                5 Commands</div>
+                <div className="item"><ShareOutlinedIcon /> 
+                Share</div>
             </div>
             {commentOpen && <Comments postId = {post.id}  />}
         </div>

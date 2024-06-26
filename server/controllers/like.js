@@ -1,3 +1,13 @@
-export const getLike = (req,res) => {
-    //todo
+import { db } from "../connect.js";
+import jwt from 'jsonwebtoken';
+
+export const getLikes = (req,res) => {
+    const q = `SELECT userid FROM likes WHERE postid = ?` 
+
+    db.query(q,[req.query.postId], (err, data)=>{
+        if(err) return res.status(500).json(err);
+console.log(req.query.postId);
+console.log(data);
+        return res.status(200).json(data)
+    })
 }

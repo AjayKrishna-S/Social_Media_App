@@ -12,7 +12,7 @@ const Posts = () => {
     queryFn:() => makeRequest.get("/posts").then((res)=>{
       return res.data;
     })});
-
+    
   return (
     <div className='posts'>
       { error 

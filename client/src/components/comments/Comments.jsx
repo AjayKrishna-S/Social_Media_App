@@ -11,17 +11,17 @@ const Comments = (post) => {
     const [desc, setDesc] = useState("");
     const { currentUser } = useContext(AuthContext)
 
-    const { data,error, isLoading } = useQuery({
+    const { data, error, isLoading } = useQuery({
         queryKey:["comments", postId],
-        queryFn:() => makeRequest.get("/comments?postId=" + postId).then((res)=>{
-        return res.data;
-        })});
-
+        queryFn:() => { makeRequest
+            .get("/comments?postId=" + postId)
+            .then((res)=>{return res.data;})
+            }
+        });
         const queryClient = useQueryClient(); 
 
-    const mutation = useMutation({
+        const mutation = useMutation({
         mutationFn: (newComment) => {
-console.log(newComment);
             return makeRequest.post('/comments', newComment);
         },
         onSuccess: () => {

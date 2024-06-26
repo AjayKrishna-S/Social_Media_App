@@ -13,14 +13,12 @@ const Comments = (post) => {
 
     const { data, error, isLoading } = useQuery({
         queryKey:["comments", postId],
-        queryFn:() => { makeRequest
-            .get("/comments?postId=" + postId)
-            .then((res)=>{return res.data;})
-            }
-        });
-        const queryClient = useQueryClient(); 
+        queryFn:() => { makeRequest.get("/comments?postId=" + postId).then((res)=>{return res.data;})
+        }
+    });
 
-        const mutation = useMutation({
+    const queryClient = useQueryClient(); 
+    const mutation = useMutation({
         mutationFn: (newComment) => {
             return makeRequest.post('/comments', newComment);
         },

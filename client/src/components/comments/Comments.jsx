@@ -13,7 +13,9 @@ const Comments = (post) => {
 
     const { data, error, isLoading } = useQuery({
         queryKey:["comments", postId],
-        queryFn:() => { makeRequest.get("/comments?postId=" + postId).then((res)=>{return res.data;})
+        queryFn:() => {return makeRequest.get("/comments?postId=" + postId).then((res)=>{
+            console.log(res.data);         
+            return res.data;})
         }
     });
 
@@ -36,7 +38,7 @@ const Comments = (post) => {
   return (
     <div className='comments'>
         <div className="write">
-            <img src={currentUser.profilePicture} alt={currentUser.name} />
+            <img src={currentUser.profilePic} alt={currentUser.name} />
             <input 
                 type="text" 
                 placeholder='Write a comment' 
@@ -45,17 +47,17 @@ const Comments = (post) => {
             />
             <button onClick={handleSubmit}>Send</button>
         </div>
-        {isLoading ? "Loading...":   
-            data.map((comment)=>{
-                return (
-                <div className='comment' key={comment.id}>
-                    <img src={comment.profilePic} alt={comment.name}/>
-                    <div className='info'>
-                        <span>{comment.name}</span>
-                        <p>{comment.desc}</p>
-                    </div>
-                    <span className='date'>{moment(comment.createdAt).fromNow()}</span>
-                </div>)  
+        {isLoading ? "Loading..."
+            :   data.map((comment)=>{
+                    return (
+                    <div className='comment' key={comment.id}>
+                        <img src={comment.profilePic} alt={comment.name}/>
+                        <div className='info'>
+                            <span>{comment.name}</span>
+                            <p>{comment.desc}</p>
+                        </div>
+                        <span className='date'>{moment(comment.createdAt).fromNow()}</span>
+                    </div>)  
             })}
     </div>
   )

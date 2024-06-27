@@ -4,8 +4,12 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Posts from '../../components/posts/Posts.jsx';
+import { useLocation } from 'react-router-dom';
 
 const Profile = () => {
+
+  const userId = useLocation().pathname.split("/")[2]
+  console.log(userId);
   return (
     <div className='profile'>
       <div className="images">

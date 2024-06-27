@@ -5,11 +5,23 @@ import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Posts from '../../components/posts/Posts.jsx';
 import { useLocation } from 'react-router-dom';
+import { makeRequest } from '../../axios.js';
+import { useQuery } from '@tanstack/react-query';
 
 const Profile = () => {
 
   const userId = useLocation().pathname.split("/")[2]
-  console.log(userId);
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["user"],
+    queryFn: () => {
+        return makeRequest.get("users/find/"+userId).then((res) => {
+            return res.data;
+        });
+    },
+});
+
+if(data) console.log(data);
   return (
     <div className='profile'>
       <div className="images">

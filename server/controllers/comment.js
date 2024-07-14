@@ -19,6 +19,7 @@ export const addComment = (req,res) => {
 
     jwt.verify(token,"secretkey",(err,userInfo)=>{
         if(err) return res.status(403).json("Token is not valid!");
+        
     const q = "INSERT INTO comments(`desc`, `createdAt`, `userid`,`postid`) VALUES (?)";
 
     const values = [

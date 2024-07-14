@@ -1,52 +1,85 @@
 import './profile.scss';
-import profile from '../../assets/images/peter-profile.JPG'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Posts from '../../components/posts/Posts.jsx';
 import { useLocation } from 'react-router-dom';
 import { makeRequest } from '../../axios.js';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/authContext.js';
 
 const Profile = () => {
 
-  const userId = useLocation().pathname.split("/")[2]
+  const userId = parseInt(useLocation().pathname.split("/")[2]);
+  const { currentUser } = useContext(AuthContext);
 
   const { data, error, isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
-        return makeRequest.get("users/find/"+userId).then((res) => {
+        return makeRequest.get("users/find/"+ userId).then((res) => {
             return res.data;
         });
     },
-});
+  });
 
-if(data) console.log(data);
+  const { data : followedUserId, err, isLoad } = useQuery({
+    queryKey: ["reletionships",userId],
+    queryFn : () => {
+      return makeRequest.get(`/reletionships?userId=${userId}`).then(res => {
+        return res.data;
+      })
+    }
+  })
+
+  console.log("folloed userId " + followedUserId);
+
+  // const queryClient = useQueryClient(); 
+
+  // const mutation = useMutation({
+  //     mutationFn: (followed) => {
+  //         if(followed) makeRequest.delete("/reletionships?userId="+ userId)
+  //         return makeRequest.post('/reletionship?',);
+  //     },
+  //     onSuccess: () => {
+  //         queryClient.invalidateQueries(["reletionship"]);
+  //     }
+  // });
+
+  // const handleReletionships = () =>{
+  //   mutation.mutate(currentUser.id)
+  // }
   return (
     <div className='profile'>
-      <div className="images">
-        <img src="https://img.freepik.com/free-vector/realistic-halloween-cobweb-background_23-2149068118.jpg?t=st=1710848710~exp=1710852310~hmac=035978e9d630028c1e2f3594d28493d52207a655d6e759de8169fb349050f060&w=740" alt="" className='cover'/>
-        <img src={profile} alt="" className='profilePicture'/>
-      </div>
-      <div className="profileContainer">
-        <div className="userInfo">
-          <div className="left">
-            <a href='http:/facebook.com'>
-              <FacebookOutlinedIcon fontSize='large'/>
-            </a>
-          </div>
-          <div className="middle">
-            <span className="userName">Peter Parker</span>
-            <span className="about">Who am I ???</span>
-            <button>Follow</button>
-          </div>
-          <div className="right">
-            <MailOutlineOutlinedIcon />
-            <MoreVertOutlinedIcon />
-          </div>
+      {isLoading ? "loading"
+      : <>
+        <div className="images">
+          <img src={data.coverPic} alt="Cover Picture" className='cover'/>
+          <img src={data.profilePic} alt="" className='profilePicture'/>
         </div>
-        <Posts />
-      </div>
+        <div className="profileContainer">
+          <div className="userInfo">
+            <div className="left">
+              <a href='http:/facebook.com'>
+                <FacebookOutlinedIcon fontSize='large'/>
+              </a>
+            </div>
+            <div className="middle">
+              <span className="userName">{data.name}</span>
+              <span className="about">Who am I ???</span>
+              { userId === currentUser.id
+                ? <button>Update</button>
+                : <button
+                  >Follow</button>}
+            </div>
+            <div className="right">
+              <MailOutlineOutlinedIcon />
+              <MoreVertOutlinedIcon />
+            </div>
+          </div>
+          <Posts />
+        </div>
+      </>}
     </div>
   )
 }

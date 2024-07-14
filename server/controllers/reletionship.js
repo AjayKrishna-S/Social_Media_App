@@ -11,39 +11,36 @@ export const getReletionships = (req,res) => {
         })
     }
 
+export const addReletionship = (req,res) => {
+    const token = req.cookies.accessToken;
+    if(!token) return res.status(401).json("User not logged in!");
 
-// export const addLike = (req,res) => {
+    jwt.verify(token,"secretkey",(err,userInfo)=>{
+        if(err) return res.status(403).json("Token is not valid!");
 
-//     const token = req.cookies.accessToken;
-//     if(!token) return res.status(401).json("User not logged in!");
+    const q = "INSERT INTO reletionships (`followerUserid`, `followedUserid`) VALUES (?)";
+    const value = [
+        userInfo.id,
+        req.body.userId
+    ]
 
-//     jwt.verify(token,"secretkey",(err,userInfo)=>{
-//         if(err) return res.status(403).json("Token is not valid!");
+    db.query(q,[value], (err, data)=>{
+        if (err) return res.status(500).json(err) ;
+        return res.status(200).json("follower has been added"); 
+    })})
+}
 
-//     const q = "INSERT INTO likes (`userid`, `postid`) VALUES (?)";
-//     const value = [
-//         userInfo.id,
-//         req.body.postId
-//     ]
+export const deleteReletionship = (req,res) => {
+    const token = req.cookies.accessToken;
+    if(!token) return res.status(401).json("User not logged in!");
 
-//     db.query(q,[value], (err, data)=>{
-//         if (err) return res.status(500).json(err) ;
-//         return res.status(200).json("Like has been added"); 
-//     })})
-// }
-
-// export const deleteLike = (req,res) => {
-
-//     const token = req.cookies.accessToken;
-//     if(!token) return res.status(401).json("User not logged in!");
-
-//     jwt.verify(token,"secretkey",(err,userInfo)=>{
-//         if(err) return res.status(403).json("Token is not valid!");
+    jwt.verify(token,"secretkey",(err,userInfo)=>{
+        if(err) return res.status(403).json("Token is not valid!");
         
-//     const q = "DELETE FROM likes WHERE userid = ? AND postid = ?";
+    const q = "DELETE FROM reletionships WHERE followerUserid = ? AND followedUserid = ?";
 
-//     db.query(q,[userInfo.id, req.query.postId], (err, data)=>{
-//         if (err) return res.status(500).json(err) ;
-//         return res.status(200).json("Likes has been removed!"); 
-//     })})
-// }
+    db.query(q,[userInfo.id, req.query.userId], (err, data)=>{
+        if (err) return res.status(500).json(err) ;
+        return res.status(200).json("follower has been removed!"); 
+    })})
+}

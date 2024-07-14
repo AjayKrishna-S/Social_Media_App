@@ -26,29 +26,32 @@ const Profile = () => {
   const { data : followedUserId, err, isLoad } = useQuery({
     queryKey: ["reletionships",userId],
     queryFn : () => {
-      return makeRequest.get(`/reletionships?userId=${userId}`).then(res => {
+      return makeRequest.get(`/reletionships?userId=${currentUser.id}`).then(res => {
         return res.data;
       })
     }
   })
 
-  console.log("folloed userId " + followedUserId);
+//   console.log("folloed userId " + followedUserId);
+  console.log("user" + userId + " " + followedUserId);
+//  if(followedUserId){
+//      console.log(userId + " " + followedUserId);
+//  }
+  const queryClient = useQueryClient(); 
 
-  // const queryClient = useQueryClient(); 
+  const mutation = useMutation({
+      mutationFn: (followed) => {
+          if(followed) makeRequest.delete("/reletionships?userId="+ userId)
+          return makeRequest.post('/reletionships?',{userId});
+      },
+      onSuccess: () => {
+          queryClient.invalidateQueries(["reletionship"]);
+      }
+  });
 
-  // const mutation = useMutation({
-  //     mutationFn: (followed) => {
-  //         if(followed) makeRequest.delete("/reletionships?userId="+ userId)
-  //         return makeRequest.post('/reletionship?',);
-  //     },
-  //     onSuccess: () => {
-  //         queryClient.invalidateQueries(["reletionship"]);
-  //     }
-  // });
-
-  // const handleReletionships = () =>{
-  //   mutation.mutate(currentUser.id)
-  // }
+  const handleReletionships = () =>{
+    mutation.mutate(followedUserId.includes(userId))
+  }
   return (
     <div className='profile'>
       {isLoading ? "loading"
@@ -67,10 +70,17 @@ const Profile = () => {
             <div className="middle">
               <span className="userName">{data.name}</span>
               <span className="about">Who am I ???</span>
-              { userId === currentUser.id
-                ? <button>Update</button>
-                : <button
-                  >Follow</button>}
+              {isLoading
+                ? "Loading.."
+                : userId === currentUser.id
+                  ? (<button>Update</button>)
+                  : (<button onClick={handleReletionships}>
+                      {(followedUserId.includes(userId))
+                      ? "Following"
+                      : "Follow"
+                      }     
+                    </button>)
+              }
             </div>
             <div className="right">
               <MailOutlineOutlinedIcon />

@@ -23,7 +23,7 @@ const Profile = () => {
     },
   });
 
-  const { data : followedUserId, err, isLoad } = useQuery({
+  const { data : followedUserId, error : rError, isLoading : rIsLoading } = useQuery({
     queryKey: ["reletionships",userId],
     queryFn : () => {
       return makeRequest.get(`/reletionships?userId=${currentUser.id}`).then(res => {
@@ -49,8 +49,8 @@ const Profile = () => {
       }
   });
 
-  const handleReletionships = () =>{
-    mutation.mutate(followedUserId.includes(userId))
+  const handleFollow = () =>{
+    mutation.mutate(rIsLoading ? "loading" :followedUserId.includes(userId))
   }
   return (
     <div className='profile'>
@@ -70,11 +70,11 @@ const Profile = () => {
             <div className="middle">
               <span className="userName">{data.name}</span>
               <span className="about">Who am I ???</span>
-              {isLoading
+              {rIsLoading
                 ? "Loading.."
                 : userId === currentUser.id
                   ? (<button>Update</button>)
-                  : (<button onClick={handleReletionships}>
+                  : (<button onClick={handleFollow}>
                       {(followedUserId.includes(userId))
                       ? "Following"
                       : "Follow"
@@ -87,7 +87,7 @@ const Profile = () => {
               <MoreVertOutlinedIcon />
             </div>
           </div>
-          <Posts />
+          <Posts userId = {userId}/>
         </div>
       </>}
     </div>

@@ -26,7 +26,7 @@ export const addReletionship = (req,res) => {
 
     db.query(q,[value], (err, data)=>{
         if (err) return res.status(500).json(err) ;
-        return res.status(200).json("follower has been added"); 
+        return res.status(200).json("Follow"); 
     })})
 }
 
@@ -41,6 +41,6 @@ export const deleteReletionship = (req,res) => {
 
     db.query(q,[userInfo.id, req.query.userId], (err, data)=>{
         if (err) return res.status(500).json(err) ;
-        return res.status(200).json("follower has been removed!"); 
+        return res.status(200).json("Unfollow!"); 
     })})
 }

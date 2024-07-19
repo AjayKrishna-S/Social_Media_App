@@ -1,16 +1,17 @@
 import './profile.scss';
-import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Posts from '../../components/posts/Posts.jsx';
 import { useLocation } from 'react-router-dom';
 import { makeRequest } from '../../axios.js';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext.js';
+import Update from '../../components/update/Update.jsx';
 
 const Profile = () => {
-
+  const [openUpdate, setOpenUpdate] = useState(false);
   const userId = parseInt(useLocation().pathname.split("/")[2]);
   const { currentUser } = useContext(AuthContext);
 
@@ -57,23 +58,21 @@ const Profile = () => {
       {isLoading ? "loading"
       : <>
         <div className="images">
-          <img src={data.coverPic} alt="Cover Picture" className='cover'/>
-          <img src={data.profilePic} alt="" className='profilePicture'/>
+          <img src={"/upload/" + data.coverPic} alt="Cover Picture" className='cover'/>
+          <img src={"/upload/" + data.profilePic} alt="" className='profilePicture'/>
         </div>
         <div className="profileContainer">
           <div className="userInfo">
             <div className="left">
-              <a href='http:/facebook.com'>
-                <FacebookOutlinedIcon fontSize='large'/>
-              </a>
+              <LocationOnIcon fontSize='large'/> <span>{data.location}</span>
             </div>
             <div className="middle">
-              <span className="userName">{data.name}</span>
-              <span className="about">Who am I ???</span>
+              <span className="name">{data.name}</span>
+              <span className="about">{data.bio}</span>
               {rIsLoading
                 ? "Loading.."
                 : userId === currentUser.id
-                  ? (<button>Update</button>)
+                  ? (<button onClick={() => setOpenUpdate(true)}>Update</button>)
                   : (<button onClick={handleFollow}>
                       {(followedUserId.includes(userId))
                       ? "Following"
@@ -90,6 +89,7 @@ const Profile = () => {
           <Posts userId = {userId}/>
         </div>
       </>}
+    { openUpdate && <Update setOpenUpdate={setOpenUpdate} user={data}/>}
     </div>
   )
 }

@@ -37,7 +37,7 @@ const Comments = (post) => {
   return (
     <div className='comments'>
         <div className="write">
-            <img src={currentUser.profilePic} alt={currentUser.name} />
+            <img src={"/upload/"+currentUser.profilePic} alt={currentUser.name} />
             <input 
                 type="text" 
                 placeholder='Write a comment' 

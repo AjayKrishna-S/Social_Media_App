@@ -8,6 +8,8 @@ import { AuthContext } from '../../context/authContext.js';
 import { useQueryClient,useMutation } from '@tanstack/react-query';
 
 const Share = () => {
+    const { currentUser } = useContext(AuthContext);
+
     const [file, setFile] = useState(null);
     const [desc, setDesc] = useState("");
 
@@ -23,7 +25,6 @@ const Share = () => {
         }
     };
 
-    const { currentUser } = useContext(AuthContext);
     const queryClient = useQueryClient(); 
 
     const mutation = useMutation({
@@ -44,12 +45,12 @@ const Share = () => {
         setFile(null);
     };
 
-  return (
+  return (  
     <div className='share'>
         <div className="container">
             <div className="top">
                 <div className="left">
-                    <img src={currentUser.profilePic} alt="profilePic" />
+                    <img src={"/upload/"+currentUser.profilePic} alt="profilePic" />
                     <input 
                         type="text" 
                         placeholder={`What's on your mind ${currentUser.name}?`} 

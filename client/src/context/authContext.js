@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
-import profilePic from "../assets/images/dp.jpg"
 import axios from "axios";
 
 
@@ -17,7 +16,7 @@ export const AuthContextProvider = ({ children }) =>{
 
         setCurrentUser(res.data);
     };
-
+console.log(currentUser);
     useEffect(()=>{
         localStorage.setItem("user",JSON.stringify(currentUser));
     },[currentUser]

@@ -14,7 +14,7 @@ const Profile = () => {
   const [openUpdate, setOpenUpdate] = useState(false);
   const userId = parseInt(useLocation().pathname.split("/")[2]);
   const { currentUser } = useContext(AuthContext);
-
+  
   const { data, error, isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
@@ -33,13 +33,7 @@ const Profile = () => {
     }
   })
 
-//   console.log("folloed userId " + followedUserId);
-  console.log("user" + userId + " " + followedUserId);
-//  if(followedUserId){
-//      console.log(userId + " " + followedUserId);
-//  }
   const queryClient = useQueryClient(); 
-
   const mutation = useMutation({
       mutationFn: (followed) => {
           if(followed) makeRequest.delete("/reletionships?userId="+ userId)

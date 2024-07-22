@@ -12,7 +12,7 @@ const Posts = ({userId}) => {
     queryFn:() => makeRequest.get("/posts?userId="+userId).then((res)=>{
       return res.data;
     })});
-console.log("post data " + data);
+
   return (
     <div className='posts'>
       { error 

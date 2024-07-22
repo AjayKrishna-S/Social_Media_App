@@ -73,10 +73,12 @@ const Post = ({post}) => {
                     </div>
                 </Link>
                 <div className='more'>
-                    <MoreHorizIcon onClick={()=> setMenuOpen(!menuOpen)}/>
-                        <div className='delete-btn'>
-                            {menuOpen && <button onClick={() => handleDelete()}>Delete</button>}
-                        </div>
+                    {currentUser.id === post.userid &&
+                        <MoreHorizIcon onClick={()=> setMenuOpen(!menuOpen)}/>
+                    }   
+                    <div className='delete-btn'>
+                        {menuOpen && <button onClick={() => handleDelete()}>Delete</button>}
+                    </div>
                 </div>
             </div>
             <div className="content">
@@ -100,7 +102,7 @@ const Post = ({post}) => {
                 <div className="item" 
                     onClick={()=> setCommentOpen(!commentOpen)}>
                     <CommentOutlinedIcon />
-                    5 Commands
+                    Commants
                 </div>
                 <div className="item">
                     <ShareOutlinedIcon /> 

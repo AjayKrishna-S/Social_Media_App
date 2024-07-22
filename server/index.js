@@ -1,6 +1,4 @@
-// const Express = require('express');
 import express from 'express';
-const app = express();
 import userRoutes from './routes/users.js'
 import postRoutes from './routes/posts.js'
 import likeRoutes from './routes/likes.js'
@@ -11,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import multer from "multer";
 
+const app = express();
 app.use((req,res,next)=>{
     res.header("Access-Control-Allow-Credentials",true);
     next();

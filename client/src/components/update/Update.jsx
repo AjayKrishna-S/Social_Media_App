@@ -46,9 +46,7 @@ const Update = ({setOpenUpdate, user}) => {
     e.preventDefault();
 
     let profileUrl = profile ? await upload(profile) : user.profilePic
-console.log(profileUrl);
     let coverUrl = cover ? await upload(cover) : user.coverPic
-  
     mutation.mutate({...text, profilePic : profileUrl, coverPic : coverUrl});
     setOpenUpdate(false);
     };
@@ -61,7 +59,7 @@ console.log(profileUrl);
           <button onClick={() => setOpenUpdate(false)}>X</button>
         </div>
         
-        <form action="UPDATE">
+        <form >
           <div className='img-container'>
             <div className='upload-img'>
               <input name='profilePic' id='profile' type="file" style={{display:"none"}} onChange={(e) => setProfile(e.target.files[0])}/>
@@ -78,7 +76,7 @@ console.log(profileUrl);
             </div>
 
             <div className='upload-img'>
-              <input name='coverPic' type="file" id='cover' style={{display:"none"}} onChange={(e) => setCover(e.target.files[0])}/>
+              <input type='file' name='coverPic' id='cover' style={{display:"none"}} onChange={(e) => setCover(e.target.files[0])}/>
               <label htmlFor="cover">
                 <div className='item'>
                 <img src={"/upload/"+currentUser.coverPic} alt="update-pic" />
@@ -92,11 +90,11 @@ console.log(profileUrl);
             </div>
           </div>
           <label htmlFor="name">Name</label>
-          <input name='name' placeholder='Edit Name' type="text" onChange={handleChange}/>
+          <input name='name' placeholder={user.name} type="text" onChange={handleChange}/>
           <label htmlFor="bio">About</label>
-          <input name='bio' placeholder='Edit About' type="text" onChange={handleChange}/>
+          <input name='bio' placeholder={user.bio} type="text" onChange={handleChange}/>
           <label htmlFor="location">Place</label>
-          <input name='location' placeholder='Edit Place' type="text" onChange={handleChange}/>
+          <input name='location' placeholder={user.location} type="text" onChange={handleChange}/>
           <button className='submit-btn' type='submit' onClick={handleSubmit}>Submit</button>
         </form>
     </div>

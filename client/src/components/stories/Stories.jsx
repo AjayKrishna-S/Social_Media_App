@@ -8,22 +8,22 @@ const Stories = () => {
     const stories = [
         {
             id: "001",
-            name: "elon musk",
+            name: "Tony Stark",
             img: "https://images.pexels.com/photos/2350074/pexels-photo-2350074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
         {
             id: "002",
-            name: "elon musk",
+            name: "Tony Stark",
             img: "https://images.pexels.com/photos/2350074/pexels-photo-2350074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
         {
             id: "003",
-            name: "elon musk",
+            name: "Tony Stark",
             img: "https://images.pexels.com/photos/2350074/pexels-photo-2350074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
         {
             id: "004",
-            name: "elon musk",
+            name: "Tony Stark",
             img: "https://images.pexels.com/photos/2350074/pexels-photo-2350074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
 

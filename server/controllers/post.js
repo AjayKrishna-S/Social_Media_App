@@ -13,10 +13,11 @@ export const getPosts = (req,res) => {
         const q = userId !== "undefined"    
             ? `SELECT p. * ,u. id AS userid, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.userid)
             WHERE p.userid = ? ORDER BY p.createdAt DESC;`
-            : `SELECT p.*,u.id AS userid, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.userid)
-            LEFT JOIN reletionships AS r ON (p.userid = r.followedUserid) WHERE r.followerUserid = ? OR p.userid = ? ORDER BY p.createdAt DESC`
 
-        const values = userId !== "undefined" ? [userId] : [userInfo.id, userInfo.id]
+            : `SELECT p.*,u.id AS userid, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.userid)
+            LEFT JOIN reletionships AS r ON (p.userid = r.followedUserid AND r.followerUserid = ?) WHERE r.followerUserid = ? OR p.userid = ? ORDER BY p.createdAt DESC`
+
+        const values = userId !== "undefined" ? [userId] : [userInfo.id, userInfo.id, userInfo.id]
         db.query(q,values,(err, data)=>{
             if (err) return res.status(500).json(err);
             return res.status(200).json(data); 

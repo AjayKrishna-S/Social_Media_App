@@ -18,16 +18,15 @@ const Register = () => {
   }
   // console.log(inputs);
   const handleClick = async(e) => {
-    e.preventDefault();
 
     try{
       await axios.post("http://localhost:8800/api/auth/register",inputs)
+
     } catch (err){
       setErr(err.response.data)
     }
   }
-console.log(inputs);
-  console.log(err);
+
   return (
     <div className='register'>
       <div className='card'>

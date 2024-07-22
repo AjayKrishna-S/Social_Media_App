@@ -66,8 +66,8 @@ const Update = ({setOpenUpdate, user}) => {
               <label htmlFor="profile">
                 <div className='item'>
                   <img src={"/upload/"+currentUser.profilePic} alt="update-pic" />
-                  <button>+</button>
-                  <span>Profile Picture</span>
+                  <span className='upload-btn'>+</span>
+                  <span className='upload-label'>Profile Picture</span>
                 </div>
               </label>
               <div className='img-url'>
@@ -80,8 +80,8 @@ const Update = ({setOpenUpdate, user}) => {
               <label htmlFor="cover">
                 <div className='item'>
                 <img src={"/upload/"+currentUser.coverPic} alt="update-pic" />
-                  <button>+</button>
-                  <span>Cover Picture</span>
+                  <span className='upload-btn'>+</span>
+                  <span className='upload-label'>Cover Picture</span>
                 </div>
               </label>
               <div className='img-url'>

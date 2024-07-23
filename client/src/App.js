@@ -18,9 +18,10 @@ function App() {
   const { darkMode } = useContext(DarkModeContext);
   const queryClient = new QueryClient()
   const cookieExists = Cookies.get('accessToken') !== undefined
-
+console.log("cookie"+Cookies.get('accessToken'));
   const ProductedRoute = ({children}) =>{
-    if(!cookieExists || !currentUser){
+    if(!currentUser){
+      console.log("false" + !cookieExists + currentUser);
       return <Navigate to="/login" />
     }
     return children

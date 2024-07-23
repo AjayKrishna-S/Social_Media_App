@@ -10,11 +10,12 @@ export const AuthContextProvider = ({ children }) =>{
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
 
     const login = async(inputs) => {
-        const res = await axios.post("http://localhost:8800/api/auth/login",inputs,{
+        const res = await axios.post("https://social-media-backend-y14s.onrender.com/api/auth/login",inputs,{
             withCredentials: true
         });
-
+        console.log("res data "+res.data);
         setCurrentUser(res.data);
+        
     };
     
     useEffect(()=>{

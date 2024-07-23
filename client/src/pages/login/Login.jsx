@@ -24,6 +24,7 @@ const Login = () => {
     try{
       await login(inputs);
       navigate("/")
+      console.log("navigate");
     }catch(err){
       setErr(err.response.data);
     }

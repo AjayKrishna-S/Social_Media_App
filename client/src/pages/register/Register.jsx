@@ -20,7 +20,7 @@ const Register = () => {
   const handleClick = async(e) => {
 
     try{
-      await axios.post("http://localhost:8800/api/auth/register",inputs)
+      await axios.post("https://social-media-backend-y14s.onrender.com/api/auth/register",inputs)
 
     } catch (err){
       setErr(err.response.data)
